@@ -15,6 +15,7 @@ const Header = () => {
                             src={Logo}
                             width="30"
                             height="30"
+                            border-radius="15"
                             className="d-inline-block align-top me-3"
                         />
                         <Link to='/' className='text-decoration-none text-white fs-4'>EduCare building Future</Link></Navbar.Brand>
