@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/ContextProvider';
@@ -20,11 +19,10 @@ const NavBar = () => {
                 console.error(error)
             })
     }
-
     return (
         <Navbar bg="dark" variant="dark" expand="lg" className="p-3">
             <Container>
-                <Navbar.Brand href="#home">Educare build</Navbar.Brand>
+                <Navbar.Brand className='fs-3 fw-bold text-primary'>Educare Solution</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -33,7 +31,7 @@ const NavBar = () => {
                         <Link className='text-decoration-none text-white mt-1 fs-5 me-3' to='/blog'>Blog</Link>
                         <Link className='text-decoration-none text-white mt-1 fs-5' to='/faqs'>fAQs</Link>
                     </Nav>
-                    <Nav className="gap-2">
+                    <Nav className="gap-3 d-flex justify-content-center align-items-center">
                         {
                             user?.uid
                                 ?
@@ -41,7 +39,8 @@ const NavBar = () => {
                                     <Button onClick={handleLogOut} className="btn btn-primary">
                                         logout
                                     </Button>
-                                    <p className='text-white mt-1'>{user?.email}</p>
+                                    <span className='text-white'>{user?.email}</span>
+                                    <Image src={user?.photoURL} style={{ width: "30x", height: "30px", borderRadius: '15px' }}></Image>
                                 </>
                                 :
                                 <>
@@ -49,7 +48,6 @@ const NavBar = () => {
                                         Login
                                     </Link>
                                     <Link
-                                        eventKey={2}
                                         className="btn btn-light text-black"
                                         to='/register'
                                     >
@@ -57,7 +55,12 @@ const NavBar = () => {
                                     </Link>
                                 </>
                         }
-
+                        <Nav.Link
+                            eventKey={2}
+                            className="btn btn-light text-black"
+                        >
+                            togol
+                        </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

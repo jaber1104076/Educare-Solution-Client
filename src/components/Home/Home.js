@@ -13,7 +13,7 @@ const Home = () => {
         <section className="hero">
             <div className="container">
                 <div className="row">
-                    <div className="col">
+                    <div className="col d-flex">
                         <h1>We are here to Develope youe Future</h1>
                         <p> Education would be much more effective if its purpose was to ensure that by the time they leave school every boy and girl should know how much they do not know, and be imbued with a lifelong desire to know it</p>
                         <div className='d-flex'>
