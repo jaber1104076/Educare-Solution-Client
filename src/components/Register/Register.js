@@ -15,11 +15,12 @@ const Register = () => {
         event.preventDefault()
         const form = event.target;
         const email = form.email.value;
-        // const name = form.name.value;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         const password = form.password.value;
         console.log(email, password)
 
-        createUser(email, password)
+        createUser(email, password, name, photoURL)
             .then((result) => {
                 const user = result.user;
                 console.log(user)
@@ -65,7 +66,7 @@ const Register = () => {
     }
 
     return (
-        <div className='mt-3'>
+        <div className='mt-5 p-5'>
             <div className="vh-100 d-flex justify-content-center align-items-center">
                 <div className="container">
                     <div className="row d-flex justify-content-center">
@@ -76,6 +77,14 @@ const Register = () => {
                                     <Form onSubmit={handleSubmit} className="mb-3 mt-md-4">
                                         <h2 className="fw-bold mb-2 text-uppercase ">Educare</h2>
                                         <p className=" mb-5">Please SignUp with email and password!</p>
+                                        <div className="mb-3">
+                                            <label htmlFor="name" className="form-label ">Full Name</label>
+                                            <input type="text" className="form-control" id="name" placeholder="Enter Full Name" />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label htmlFor="name" className="form-label ">Photo URl</label>
+                                            <input type="text" className="form-control" id="PhotoURL" name="photoURL" placeholder="Enter Photo URL" />
+                                        </div>
                                         <div className="mb-3">
                                             <label htmlFor="email" className="form-label ">Email address</label>
                                             <input type="email" className="form-control" id="email" placeholder="name@example.com" />
