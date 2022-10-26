@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../../styles/Login.css';
 import { FaGithub, FaGoogle } from 'react-icons/fa'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/ContextProvider';
+import './Register.css'
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const [error, setError] = useState("")
+    const { createUser, googleSignIn, githubSignIn } = useContext(AuthContext)
+    const navigate = useNavigate()
     const handleSubmit = event => {
         event.preventDefault()
         const form = event.target;
@@ -20,9 +23,14 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user)
+                form.reset()
+                // handlegoogleSignIn();
+                // handleGithubSignIn();
+                navigate('/home')
             })
             .catch((error) => {
                 console.error(error)
+                setError(error.message)
             })
 
     }
@@ -31,8 +39,31 @@ const Register = () => {
 
 
     const handlegoogleSignIn = () => {
-
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+                navigate('/home')
+            })
+            .catch((error) => {
+                console.error(error)
+                setError(error.message)
+            })
     }
+
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user)
+                navigate('/home')
+            })
+            .catch((error) => {
+                console.error(error)
+                setError(error.message)
+            })
+    }
+
     return (
         <div className='mt-3'>
             <div className="vh-100 d-flex justify-content-center align-items-center">
@@ -57,11 +88,12 @@ const Register = () => {
                                         <div className="d-grid">
                                             <Button className="btn btn-outline-dark" type="submit">Sign Up</Button>
                                         </div>
+                                        <p>{error}</p>
                                     </Form>
                                     <div>
                                         <p className='fs-3 text-center'>
-                                            <FaGoogle onClick={handlegoogleSignIn} className='me-3'></FaGoogle>
-                                            <FaGithub></FaGithub>
+                                            <FaGoogle onClick={handlegoogleSignIn} className='me-3 cursor-pointer'></FaGoogle>
+                                            <FaGithub onClick={handleGithubSignIn} className='cursor-pointer'></FaGithub>
                                         </p>
                                         <p className="mb-0  text-center">Already have an account? <Link to="/login"
                                             className="text-primary fw-bold">LogIn</Link></p>
