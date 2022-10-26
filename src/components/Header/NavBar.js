@@ -6,6 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/ContextProvider';
+import { FaToggleOn } from 'react-icons/fa'
 
 const NavBar = () => {
     const { user, LogOut } = useContext(AuthContext)
@@ -57,9 +58,9 @@ const NavBar = () => {
                         }
                         <Nav.Link
                             eventKey={2}
-                            className="btn btn-light text-black"
+                            className="fs-2 text-primary"
                         >
-                            togol
+                            <p><FaToggleOn></FaToggleOn></p>
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
