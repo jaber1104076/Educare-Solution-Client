@@ -47,7 +47,7 @@ const Header = () => {
                                 {user?.uid &&
                                     <>
                                         <Button onClick={handleLogOut}>Logout</Button>
-                                        <p>{user?.displayName}</p>
+                                        <p>{user?.email}</p>
                                     </>}
                             </Nav.Link>
                         </Nav>
