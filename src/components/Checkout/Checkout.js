@@ -1,21 +1,32 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-import PriviewItem from './PriviewItem';
+import CheckoutCourse from './CheckoutCourse';
 
-const Checkout = () => {
-    const course = useLoaderData()
-    console.log(course)
+const CheckOut = () => {
+
+    const courseName = useLoaderData();
+    console.log(courseName)
     return (
         <div>
-            <h1>this is checkout</h1>
+            <h2 className='fw-bold text-center mb-4'>Your Checkout Course</h2>
             {
-                course.map(c => <PriviewItem
-                    key={c._id}
-                    course={c}
-                ></PriviewItem>)
+                courseName.map(name => <CheckoutCourse
+
+                    key={name._id}
+                    name={name}
+
+                >
+
+                </CheckoutCourse>)
+
+
+
+
             }
         </div>
-    );
+    )
+
+
 };
 
-export default Checkout;
+export default CheckOut;
