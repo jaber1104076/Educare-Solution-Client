@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -6,10 +6,27 @@ import Navbar from 'react-bootstrap/Navbar';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/ContextProvider';
-import { FaToggleOn } from 'react-icons/fa'
+import './NavBar.css'
 
 const NavBar = () => {
     const { user, LogOut } = useContext(AuthContext)
+
+    const [theme, setTheme] = useState(
+        localStorage.getItem('theme') || 'light'
+    );
+
+    const toggleTheme = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        }
+        else {
+            setTheme('light');
+        }
+    };
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        document.body.className = theme;
+    }, [theme]);
 
     const handleLogOut = () => {
         LogOut()
@@ -21,16 +38,16 @@ const NavBar = () => {
             })
     }
     return (
-        <Navbar bg="dark" variant="dark" expand="lg" className="p-3">
+        <Navbar bg="light" variant="light" expand="lg" className="p-3">
             <Container>
                 <Navbar.Brand className='fs-3 fw-bold text-primary'>Educare Solution</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link className='text-decoration-none text-white mt-1 fs-5 me-3' to='/home'>Home</Link>
-                        <Link className='text-decoration-none text-white mt-1 fs-5 me-3' to='/course'>Course</Link>
-                        <Link className='text-decoration-none text-white mt-1 fs-5 me-3' to='/blog'>Blog</Link>
-                        <Link className='text-decoration-none text-white mt-1 fs-5' to='/faqs'>fAQs</Link>
+                        <Link className='text-decoration-none  mt-1 fs-5 me-3' to='/home'>Home</Link>
+                        <Link className='text-decoration-none mt-1 fs-5 me-3' to='/course'>Course</Link>
+                        <Link className='text-decoration-none  mt-1 fs-5 me-3' to='/blog'>Blog</Link>
+                        <Link className='text-decoration-none  mt-1 fs-5' to='/faqs'>fAQs</Link>
                     </Nav>
                     <Nav className="gap-3 d-flex justify-content-center align-items-center">
                         {
@@ -40,7 +57,6 @@ const NavBar = () => {
                                     <Button onClick={handleLogOut} className="btn btn-primary">
                                         logout
                                     </Button>
-                                    <span className='text-white'>{user?.email}</span>
                                     <Image src={user?.photoURL} style={{ width: "30x", height: "30px", borderRadius: '15px' }}></Image>
                                 </>
                                 :
@@ -58,11 +74,13 @@ const NavBar = () => {
                         }
                         <Nav.Link
                             eventKey={2}
-                            className="fs-2 text-primary"
                         >
-                            <p><FaToggleOn></FaToggleOn></p>
+                            <div className={`App ${theme}`}>
+                                <p className='btn btn-light text-black mb-0' onClick={toggleTheme}>Toggle</p>
+                            </div>
                         </Nav.Link>
                     </Nav>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar>

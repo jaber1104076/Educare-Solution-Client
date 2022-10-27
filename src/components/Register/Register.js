@@ -18,7 +18,7 @@ const Register = () => {
         const name = form.name.value;
         const photoURL = form.photoURL.value;
         const password = form.password.value;
-        console.log(email, password)
+        //console.log(email, password)
 
         createUser(email, password, name, photoURL)
             .then((result) => {
@@ -67,13 +67,13 @@ const Register = () => {
 
     return (
         <div className='mt-5 p-5'>
-            <div className="vh-100 d-flex justify-content-center align-items-center">
+            <div className="vh-100 d-flex justify-content-center align-items-center ">
                 <div className="container">
-                    <div className="row d-flex justify-content-center">
+                    <div className="row d-flex justify-content-center ">
                         <div className="col-12 col-md-8 col-lg-6">
                             <div className="border border-3 border-primary"></div>
                             <div className="card bg-white shadow-lg">
-                                <div className="card-body p-5">
+                                <div className="card-body p-5 back-ground">
                                     <Form onSubmit={handleSubmit} className="mb-3 mt-md-4">
                                         <h2 className="fw-bold mb-2 text-uppercase ">Educare</h2>
                                         <p className=" mb-5">Please SignUp with email and password!</p>
