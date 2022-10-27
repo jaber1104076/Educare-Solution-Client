@@ -1,19 +1,21 @@
 import React from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
 
 const CourseDetails = ({ course }) => {
     const { title, image_url, details, instructor, _id, rating } = course;
-
+    const handleCheckout = (id) => {
+        return id;
+    }
     return (
         <div className='shadow p-4 mb-4 rounded-3'>
             <img className="img-fluid w-100 h-50 rounded-3" src={image_url} alt="" />
             <h2>{title}</h2>
             <p>{details.length > 250 ?
-                <p>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></p>
+                <span>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></span>
                 :
-                <p>{details}</p>
+                <span>{details}</span>
 
             }</p>
             <div className='d-flex'>
@@ -24,11 +26,11 @@ const CourseDetails = ({ course }) => {
                     style={{ width: "50", height: '50px' }}
 
                 ></Image>
-                <div className='d-flex'>
-                    <div className='ms-auto'>
+                <div className='d-flex justify-content-between'>
+                    <div>
                         <p className='mb-0'>{instructor.name}</p>
                         <p className='mb-0'><small>Course Duration: {instructor.duration}</small></p>
-                        <div className='d-flex'>
+                        <div className='me-5 pe-5'>
                             <div className='align-items-center'>
                                 <FaStar className='text-warning me-2'></FaStar>
                                 <FaStar className='text-warning me-2'></FaStar>
@@ -40,6 +42,10 @@ const CourseDetails = ({ course }) => {
 
 
                         </div>
+
+                    </div>
+                    <div>
+                        <Link to="/checkout"> <p onClick={() => handleCheckout(_id)} className='btn btn-primary ms-5 mt-2 '>Get premium Access</p></Link>
                     </div>
                 </div>
 

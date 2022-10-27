@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../../components/Blog/Blog";
 import Category from "../../components/Category/Category";
+import Checkout from "../../components/Checkout/Checkout";
 import CourseInitial from "../../components/CourseInitial/CourseInitial";
 import Courses from "../../components/Courses/Courses";
 import FAQs from "../../components/FAQs/FAQs";
@@ -9,6 +10,7 @@ import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import ErrorPage from '../../Layout/ErrorPage'
 import Main from "../../Layout/Main";
+import PrivateRout from "./PrivateRout";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +58,10 @@ export const router = createBrowserRouter([
                 path: '/faqs',
                 element: <FAQs></FAQs>,
             },
+            {
+                path: '/checkout',
+                element: <PrivateRout><Checkout></Checkout></PrivateRout>
+            }
 
         ]
     }
