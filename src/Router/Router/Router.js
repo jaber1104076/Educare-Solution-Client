@@ -28,18 +28,18 @@ export const router = createBrowserRouter([
             },
             {
                 path: ('/category/:id'),
-                element: <PrivateRout><Category></Category></PrivateRout>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                element: <Category></Category>,
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-jaber1104076.vercel.app/category/${params.id}`)
             },
             {
                 path: ('/courses/:id'),
                 element: <Courses></Courses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-jaber1104076.vercel.app/courses/${params.id}`)
             },
             {
                 path: ('/course'),
                 element: <CourseInitial></CourseInitial>,
-                loader: () => fetch('http://localhost:5000/courses'),
+                loader: () => fetch('https://b610-lerning-platform-server-side-jaber1104076.vercel.app/courses'),
             },
 
             {
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <PrivateRout><CheckOut></CheckOut></PrivateRout>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-jaber1104076.vercel.app/category/${params.id}`)
 
             },
 
