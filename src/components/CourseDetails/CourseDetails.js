@@ -10,11 +10,11 @@ const CourseDetails = ({ course }) => {
     const ref = React.createRef()
 
     return (
-        <div className='shadow p-4 mb-4 rounded-3'>
+        <div className='shadow p-4 mb-4 rounded-3 border-top border-3 border-primary'>
             <img className="img-fluid w-100 h-50 rounded-3" src={image_url} alt="" />
             <h2>{title}</h2>
             <p>{details.length > 250 ?
-                <span>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}>Read More</Link></span>
+                <span>{details.slice(0, 250) + '...'} <Link to={`/courses/${_id}`}>Click to see More</Link></span>
                 :
                 <span>{details}</span>
 
@@ -45,9 +45,6 @@ const CourseDetails = ({ course }) => {
                         </div>
 
                     </div>
-                    {/* <div>
-                        <Link to="/checkout"> <p className='btn btn-primary ms-2 mt-2 me-2'>Get premium Access</p></Link>
-                    </div> */}
                     <div>
                         <div>
                             <Pdf targetRef={ref} filename="course-example.pdf">

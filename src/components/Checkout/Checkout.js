@@ -8,7 +8,7 @@ const CheckOut = () => {
     console.log(courseName)
     return (
         <div>
-            <h2 className='fw-bold text-center mb-4'>Your Checkout Course</h2>
+            <h2 className='fw-bold text-center mb-4'>Checkout Course</h2>
             {
                 courseName.map(name => <CheckoutCourse
 
