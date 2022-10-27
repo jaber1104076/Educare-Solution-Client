@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/ContextProvider';
 import './NavBar.css'
+import Logo from '../../assets/images/Logo.jpg'
 
 const NavBar = () => {
     const { user, LogOut } = useContext(AuthContext)
@@ -40,14 +41,25 @@ const NavBar = () => {
     return (
         <Navbar bg="light" variant="light" expand="lg" className="p-3">
             <Container>
-                <Navbar.Brand className='fs-3 fw-bold text-primary'>Educare Solution</Navbar.Brand>
+                <Navbar.Brand>
+                    <img
+                        alt=""
+                        roundedCircle
+                        src={Logo}
+                        // width="30"
+                        // height="30"
+                        // border-radius="15"
+                        className="d-inline-block img-nav align-top me-2 mt-1"
+                    />
+                    <Link to='/' className='text-decoration-none text-dark fw-bolder fs-3'>EduCare Solution</Link></Navbar.Brand>
+                {/* <Navbar.Brand className='fs-3 fw-bold text-primary'>Educare Solution</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        <Link className='text-decoration-none  mt-1 fs-5 me-3' to='/home'>Home</Link>
-                        <Link className='text-decoration-none mt-1 fs-5 me-3' to='/course'>Course</Link>
-                        <Link className='text-decoration-none  mt-1 fs-5 me-3' to='/blog'>Blog</Link>
-                        <Link className='text-decoration-none  mt-1 fs-5' to='/faqs'>fAQs</Link>
+                        <Link className='text-decoration-none text-dark  mt-1 fs-5 me-3' to='/home'>Home</Link>
+                        <Link className='text-decoration-none text-dark mt-1 fs-5 me-3' to='/course'>Course</Link>
+                        <Link className='text-decoration-none text-dark  mt-1 fs-5 me-3' to='/blog'>Blog</Link>
+                        <Link className='text-decoration-none text-dark  mt-1 fs-5' to='/faqs'>fAQs</Link>
                     </Nav>
                     <Nav className="gap-3 d-flex justify-content-center align-items-center">
                         {

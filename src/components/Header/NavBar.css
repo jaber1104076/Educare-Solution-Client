@@ -13,3 +13,9 @@
     border: none;
     border-radius: 8px;
 }
+
+.img-nav {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
